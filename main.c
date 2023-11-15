@@ -11,6 +11,8 @@ h_s h = {NULL, NULL, NULL};
 int main(int argc, char *argv[])
 {
 	FILE *file;
+
+	(void)h;
 	/*check If the user does not give any file*/
 	if (argc != 2)
 	{

@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * h_pall - Prints all elements in the stack
  * @stack: A pointer to the stack
