@@ -59,24 +59,37 @@ void opcodes(char *line, int num_lines, stack_t **stack)
  */
 void handle_push(char *value, stack_t **stack, int line_number)
 {
-	float floatValue = strtof(value, NULL);
-	int int_value = (int)floatValue;
+	float floatValue = 0.0;
+	int int_value, is_number = 1, i;
 
 	if (!value)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_all();
+		return;
+	}
+	if (value[0] == '0')
+	{
+		h_push(stack, 0);
+		return;
+	}
+	for (i = 0; value[i] != '\0'; i++)
+	{
+		if (!isdigit(value[i]) && value[i] != '-' && value[i] != '.')
+		{
+			is_number = 0;
+			break;
+		}
 	}
 
-	if (floatValue != int_value)
+	floatValue = strtof(value, NULL);
+	int_value = (int)floatValue;
+	if (floatValue != int_value || !is_number)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_all();
+		return;
 	}
-
-
-	if (value[0] == '-' || (value[0] > '0' && value[0] <= '9'))
-		int_value = atoi(value);
 	h_push(stack, int_value);
 }
 

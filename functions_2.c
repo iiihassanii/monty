@@ -1,5 +1,6 @@
 #include "monty.h"
 
+
 /**
  * h_pint - Prints the value at the top of the stack
  * @stack: A pointer to the stack
@@ -11,11 +12,10 @@ void h_pint(stack_t **stack, unsigned int line_number)
 {
 	if (!stack || !(*stack))
 	{
-		printf("L%u: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		free_all();
+		return;
 	}
-	h.head = *stack;
-
 	printf("%d\n", h.head->n);
 }
 
@@ -28,11 +28,11 @@ void h_pint(stack_t **stack, unsigned int line_number)
  */
 void h_pop(stack_t **stack, unsigned int line_number)
 {
-
 	if (!stack || !(*stack))
 	{
-		printf("L%u: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		free_all();
+		return;
 	}
 
 	h.head = *stack;
@@ -41,6 +41,7 @@ void h_pop(stack_t **stack, unsigned int line_number)
 	if (*stack != NULL)
 		(*stack)->prev = NULL;
 	free(h.head);
+	h.head = *stack;
 }
 
 /**
@@ -63,8 +64,10 @@ void h_swap(stack_t **stack, unsigned int line_number)
 	}
 	if (len < 2)
 	{
-		printf("L%u: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		h.head = *stack;
 		free_all();
+		return;
 	}
 
 	h.head = *stack;
@@ -83,7 +86,7 @@ void h_swap(stack_t **stack, unsigned int line_number)
  */
 void h_add(stack_t **stack, unsigned int line_number)
 {
-	int sum = 0, len;
+	int sum = 0, len = 0;
 
 	h.head = *stack;
 
@@ -94,8 +97,10 @@ void h_add(stack_t **stack, unsigned int line_number)
 	}
 	if (len < 2)
 	{
-		printf("L%u: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		h.head = *stack;
 		free_all();
+		return;
 	}
 
 	h.head = *stack;
@@ -104,7 +109,6 @@ void h_add(stack_t **stack, unsigned int line_number)
 
 	h.head->next->n = sum;
 
-	*stack = h.head->next;
 }
 
 /**

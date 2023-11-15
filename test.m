@@ -1,5 +1,8 @@
-push 1
-push 2
+push 
+push
+push 32
+push 5
+pall
+push hs
 push 3
-add
 pall
