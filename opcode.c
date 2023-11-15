@@ -46,15 +46,15 @@ void opcodes(char *line, int num_lines, stack_t **stack)
 	}
 	if (flag == 0)
 	{
-			fprintf(stderr, "L%d: unknown instruction %s\n", num_lines, token);
-			free_all();
+		fprintf(stderr, "L%d: unknown instruction %s\n", num_lines, token);
+		free_all();
 	}
 }
 /**
  * handle_push - Handles the push opcode
  * @value: The value to push onto the stack
  * @stack: A pointer to the stack
- *
+ * @line_number: the number of line we read
  * Return: void
  */
 void handle_push(char *value, stack_t **stack, int line_number)
