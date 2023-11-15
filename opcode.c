@@ -1,5 +1,6 @@
 #include "monty.h"
 
+void opcodes(char *line, int num_lines, stack_t **stack);
 /**
  * opcodes - Interprets and executes stack-based operations
  * @line: The line of code to interpret
@@ -20,6 +21,8 @@ void opcodes(char *line, int num_lines, stack_t **stack)
 		{"swap", h_swap},
 		{"add", h_add},
 		{"nop", h_nop},
+		{"sub", h_sub},
+		{"div", h_div},
 		{NULL, NULL}
 	};
 

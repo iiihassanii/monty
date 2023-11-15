@@ -66,6 +66,8 @@ void h_pop(stack_t **stack, unsigned int line_number);
 void h_swap(stack_t **stack, unsigned int line_number);
 void h_add(stack_t **stack, unsigned int line_number);
 void h_nop(stack_t **stack, unsigned int line_number);
+void h_sub(stack_t **stack, unsigned int line_number);
+void h_div(stack_t **stack, unsigned int line_number);
 void free_stack(void);
 void free_all(void);
 #endif
