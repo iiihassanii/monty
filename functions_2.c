@@ -86,16 +86,9 @@ void h_swap(stack_t **stack, unsigned int line_number)
  */
 void h_add(stack_t **stack, unsigned int line_number)
 {
-	int sum = 0, len = 0;
+	int sum = 0;
 
-	h.head = *stack;
-
-	while (h.head)
-	{
-		h.head = h.head->next;
-		len++;
-	}
-	if (len < 2)
+	if ((*stack) == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
 		h.head = *stack;
@@ -109,6 +102,8 @@ void h_add(stack_t **stack, unsigned int line_number)
 
 	h.head->next->n = sum;
 
+	h_pop(stack, line_number);
+
 }
 
 /**
@@ -120,7 +115,7 @@ void h_add(stack_t **stack, unsigned int line_number)
  */
 void h_nop(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
+	(void) stack;
+	(void) line_number;
 }
 
