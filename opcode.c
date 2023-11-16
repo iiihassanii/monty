@@ -23,6 +23,8 @@ void opcodes(char *line, int num_lines, stack_t **stack)
 		{"nop", h_nop},
 		{"sub", h_sub},
 		{"div", h_div},
+		{"mul", h_mul},
+		{"mod", h_mod},
 		{NULL, NULL}
 	};
 
