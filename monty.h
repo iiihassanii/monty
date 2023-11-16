@@ -53,6 +53,7 @@ typedef struct h_t
 	FILE *file;
 	stack_t *head;
 	char *line;
+	int stack;
 } h_s;
 extern h_s h;
 
@@ -74,6 +75,7 @@ void h_pchar(stack_t **stack, unsigned int line_number);
 void h_pstr(stack_t **stack, unsigned int line_number);
 void h_rotl(stack_t **stack, unsigned int line_number);
 void h_rotr(stack_t **stack, unsigned int line_number);
+void q_push(stack_t **queue, int n);
 void free_stack(void);
 void free_all(void);
 #endif

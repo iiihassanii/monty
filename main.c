@@ -1,5 +1,5 @@
 #include "monty.h"
-h_s h = {NULL, NULL, NULL};
+h_s h = {NULL, NULL, NULL, 1};
 /**
  * main - Entry point of the program
  * @argc: Number of command-line arguments

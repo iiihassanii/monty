@@ -37,12 +37,22 @@ void opcodes(char *line, int num_lines, stack_t **stack)
 		return;
 	if (token && token[0] == '#')
 		return;
+	if (strcmp(token, "queue") == 0)
+	{
+		h.stack = 0;
+		return;
+	}
+	if (strcmp(token, "stack") == 0)
+	{
+		h.stack = 1;
+		return;
+	}
+
 	if (strcmp(token, "push") == 0)
 	{
 		handle_push(strtok(NULL, " \n\t"), stack, num_lines);
 		return;
 	}
-
 
 	while (op[i].opcode)
 	{
@@ -80,7 +90,10 @@ void handle_push(char *value, stack_t **stack, int line_number)
 	}
 	if (value[0] == '0')
 	{
-		h_push(stack, 0);
+		if (h.stack == 1)
+			h_push(stack, 0);
+		else
+			q_push(stack, 0);
 		return;
 	}
 	for (i = 0; value[i] != '\0'; i++)
@@ -100,7 +113,10 @@ void handle_push(char *value, stack_t **stack, int line_number)
 		free_all();
 		return;
 	}
-	h_push(stack, int_value);
+	if (h.stack == 1)
+		h_push(stack, int_value);
+	else
+		q_push(stack, int_value);
 }
 
 /**
