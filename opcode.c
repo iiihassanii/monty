@@ -25,13 +25,16 @@ void opcodes(char *line, int num_lines, stack_t **stack)
 		{"div", h_div},
 		{"mul", h_mul},
 		{"mod", h_mod},
+		{"pchar", h_pchar},
+		{"pstr", h_pstr},
 		{NULL, NULL}
 	};
 
 	token = strtok(line, " \n\t");
 	if (token == NULL)
 		return;
-
+	if (token && token[0] == '#')
+		return;
 	if (strcmp(token, "push") == 0)
 	{
 		handle_push(strtok(NULL, " \n\t"), stack, num_lines);
