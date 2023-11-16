@@ -33,10 +33,10 @@ void h_pchar(stack_t **stack, unsigned int line_number)
  */
 void h_pstr(stack_t **stack, unsigned int line_number)
 {
+	stack_t *node = h.head;
 	(void)line_number;
 
 	h.head = *stack;
-
 	while (h.head)
 	{
 		if (h.head->n > 127 || h.head->n < 1)
@@ -44,5 +44,6 @@ void h_pstr(stack_t **stack, unsigned int line_number)
 		printf("%c", h.head->n);
 		h.head = h.head->next;
 	}
+	h.head = node;
 	printf("\n");
 }
