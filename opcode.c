@@ -27,6 +27,7 @@ void opcodes(char *line, int num_lines, stack_t **stack)
 		{"mod", h_mod},
 		{"pchar", h_pchar},
 		{"pstr", h_pstr},
+		{"rotl",h_rotl},
 		{NULL, NULL}
 	};
 

@@ -72,6 +72,7 @@ void h_mul(stack_t **stack, unsigned int line_number);
 void h_mod(stack_t **stack, unsigned int line_number);
 void h_pchar(stack_t **stack, unsigned int line_number);
 void h_pstr(stack_t **stack, unsigned int line_number);
+void h_rotl(stack_t **stack, unsigned int line_number);
 void free_stack(void);
 void free_all(void);
 #endif
